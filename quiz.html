@@ -43,12 +43,6 @@
         button:hover {
             background: #e6004c;
         }
-        #result {
-            display: none;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -94,4 +88,33 @@
                 <label><input type="radio" name="q5" value="A"> Ramen</label>
                 <label><input type="radio" name="q5" value="B"> Gyoza</label>
                 <label><input type="radio" name="q5" value="C"> Siomai</label>
-                <label><input t
+                <label><input type="radio" name="q5" value="D"> Sushi</label>
+            </div>
+
+            <button type="button" onclick="calculateScore()">Submit Answers</button>
+        </form>
+
+    </div>
+
+    <script>
+        function calculateScore() {
+            let score = 0;
+            let answers = { q1: "A", q2: "C", q3: "D", q4: "C", q5: "B" };
+
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                }
+            }
+
+            if (score >= 3) {
+                window.location.href = "highscore.html";
+            } else {
+                window.location.href = "lowscore.html";
+            }
+        }
+    </script>
+
+</body>
+</html>
